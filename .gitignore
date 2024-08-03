@@ -4,5 +4,9 @@ node_modules
 # production
 build
 
+# database
+*.db
+*.db-journal
+
 # local env files
 .env
