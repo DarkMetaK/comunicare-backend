@@ -7,7 +7,9 @@
     "build": "tsup src/**/*.{js,ts} --out-dir build",
     "start": "node build/server.js",
     "dev": "tsx watch src/server.ts",
-    "test": "poku -w"
+    "test": "poku ./src/use-cases",
+    "test:watch": "poku -w ./src/use-cases",
+    "test:e2e": "poku ./src/http --env-file=./.env.test"
   },
   "keywords": [],
   "author": "",
@@ -26,9 +28,11 @@
     "@rocketseat/eslint-config": "2.2.2",
     "@types/bcryptjs": "2.4.6",
     "@types/node": "22.1.0",
+    "@types/supertest": "6.0.2",
     "eslint": "8.57.0",
     "poku": "2.3.0",
     "prisma": "5.17.0",
+    "supertest": "7.0.0",
     "tsup": "8.2.4",
     "tsx": "4.16.5",
     "typescript": "5.5.4"

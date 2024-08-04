@@ -10,3 +10,4 @@ build
 
 # local env files
 .env
+.env.test
