@@ -1,6 +1,7 @@
 import { Category } from '@prisma/client'
 
 import { CategoriesRepository } from '@/repositories/categories-repository'
+import { CategoryAlreadyExistsError } from './errors/category-already-exists-error'
 
 interface CreateCategoryUseCaseRequest {
   name: string
@@ -16,8 +17,14 @@ export class CreateCategoryUseCase {
   async execute({
     name,
   }: CreateCategoryUseCaseRequest): Promise<CreateCategoryUseCaseResponse> {
+    const nameAlreadyExists = await this.categoriesRepository.findById(name)
+
+    if (nameAlreadyExists) {
+      throw new CategoryAlreadyExistsError()
+    }
+
     const category = await this.categoriesRepository.create({
-      name,
+      id: name,
     })
 
     return {
