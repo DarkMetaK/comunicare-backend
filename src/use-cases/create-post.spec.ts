@@ -17,11 +17,11 @@ describe('Create Post Use Case', async () => {
     sut = new CreatePostUseCase(postsRepository, categoriesRepository)
 
     await categoriesRepository.create({
-      id: 'Category 1',
+      name: 'Category 1',
     })
 
     await categoriesRepository.create({
-      id: 'Category 2',
+      name: 'Category 2',
     })
   })
 

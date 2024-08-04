@@ -2,7 +2,7 @@ import { assert, beforeEach, describe, it } from 'poku'
 
 import { InMemoryCategoriesRepository } from '@/repositories/in-memory/in-memory-categories-repository'
 import { CreateCategoryUseCase } from './create-category'
-import { CategoryAlreadyExistsError } from './errors/category-already-exists-error'
+import { CategoryNameAlreadyInUseError } from './errors/category-name-already-in-use-error'
 
 let categoriesRepository: InMemoryCategoriesRepository
 let sut: CreateCategoryUseCase
@@ -19,7 +19,7 @@ describe('Create Category Use Case', async () => {
     })
 
     assert(category)
-    assert.equal(category.id, 'New Category')
+    assert.equal(category.name, 'New Category')
   })
 
   await it('should not be able to create a category with same name', async () => {
@@ -32,7 +32,7 @@ describe('Create Category Use Case', async () => {
         name: 'New Category',
       })
     } catch (error) {
-      assert(error instanceof CategoryAlreadyExistsError)
+      assert(error instanceof CategoryNameAlreadyInUseError)
     }
   })
 })

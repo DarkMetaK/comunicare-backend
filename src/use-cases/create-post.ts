@@ -42,8 +42,8 @@ export class CreatePostUseCase {
       throw new RequiredCategoriesError()
     }
 
-    for (const categoryId of uniqueCategories) {
-      const category = await this.categoriesRepository.findById(categoryId)
+    for (const categoryName of uniqueCategories) {
+      const category = await this.categoriesRepository.findByName(categoryName)
 
       if (!category) {
         throw new ResourceNotFoundError()

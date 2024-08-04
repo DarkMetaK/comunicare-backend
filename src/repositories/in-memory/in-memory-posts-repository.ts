@@ -36,14 +36,4 @@ export class InMemoryPostsRepository implements PostsRepository {
 
     return post
   }
-
-  async update(post: PostWithCategories) {
-    const postIndex = this.items.findIndex((item) => item.id === post.id)
-
-    if (postIndex >= 0) {
-      this.items[postIndex] = post
-    }
-
-    return post
-  }
 }

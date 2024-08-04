@@ -17,5 +17,4 @@ export interface PostCreate {
 export interface PostsRepository {
   create(data: PostCreate): Promise<PostWithCategories>
   findById(id: string): Promise<PostWithCategories | null>
-  update(data: Post): Promise<PostWithCategories>
 }
